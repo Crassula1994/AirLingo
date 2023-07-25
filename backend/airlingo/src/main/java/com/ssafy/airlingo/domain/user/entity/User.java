@@ -151,6 +151,7 @@ public class User extends BaseTimeEntity {
 				.collect(Collectors.toList()))
 			.userRating(this.getUserRating())
 			.userBio(this.getUserBio())
+			.usingMileage(matchingRequestDto.isPremium())
 			.build();
 	}
 
@@ -158,9 +159,13 @@ public class User extends BaseTimeEntity {
 		this.userComplain += 1;
 	}
 
-	public void renewRatingAndStudyCount(double rating){
+	public void renewRatingAndStudyCount(double rating) {
 		userTotalRating += rating;
 		userStudyCount += 1;
-		userRating = userTotalRating/userStudyCount;
+		userRating = userTotalRating / userStudyCount;
+	}
+
+	public boolean isImpossiblePremiumMatching(int premiumMileage) {
+		return userMileage < premiumMileage;
 	}
 }
