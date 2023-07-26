@@ -7,8 +7,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ssafy.airlingo.domain.language.dto.request.LanguageDto;
 import com.ssafy.airlingo.domain.language.entity.Language;
 import com.ssafy.airlingo.domain.language.entity.UserLanguage;
-import com.ssafy.airlingo.domain.matching.request.MatchingRequestDto;
-import com.ssafy.airlingo.domain.matching.response.MatchingUserDto;
 import com.ssafy.airlingo.domain.user.dto.response.LoginResponseDto;
 import com.ssafy.airlingo.domain.user.dto.response.UserResponseDto;
 import com.ssafy.airlingo.global.entity.BaseTimeEntity;
@@ -140,21 +138,6 @@ public class User extends BaseTimeEntity {
 		userLanguage.setUser(null);
 	}
 
-	public MatchingUserDto toMatchingUserDto(MatchingRequestDto matchingRequestDto) {
-		return MatchingUserDto.builder().
-			userNickname(this.userNickname)
-			.userImgUrl(this.userImgUrl)
-			.userNativeLanguage(this.userNativeLanguage.getLanguageName())
-			.userStudyLanguage(matchingRequestDto.getStudyLanguage())
-			.userInterestLanguages(this.userLanguages.stream()
-				.map(userLanguage -> userLanguage.getLanguage().getLanguageName())
-				.collect(Collectors.toList()))
-			.userRating(this.getUserRating())
-			.userBio(this.getUserBio())
-			.usingMileage(matchingRequestDto.isPremium())
-			.build();
-	}
-
 	public void addComplainCount() {
 		this.userComplain += 1;
 	}
@@ -167,5 +150,9 @@ public class User extends BaseTimeEntity {
 
 	public boolean isImpossiblePremiumMatching(int premiumMileage) {
 		return userMileage < premiumMileage;
+	}
+
+	public void useMileage(int premiumMileage) {
+		userMileage -= premiumMileage;
 	}
 }
