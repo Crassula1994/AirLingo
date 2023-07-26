@@ -19,12 +19,16 @@ public class Grade {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer gradeId;
+	private Long gradeId;
 
 	@Column(nullable = false, unique = true, length = 100)
 	private String gradeName;
 
-	public Grade(String gradeName) {
+	@Column(nullable = false)
+	private int gradeScore;
+
+	public Grade(String gradeName, int gradeScore) {
 		this.gradeName = gradeName;
+		this.gradeScore = gradeScore;
 	}
 }
