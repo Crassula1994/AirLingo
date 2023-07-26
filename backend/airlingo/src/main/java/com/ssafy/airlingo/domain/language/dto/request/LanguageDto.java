@@ -12,7 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LanguageDto {
-	private int languageId;
+	private Long languageId;
 	private String languageName;
 
 	public LanguageDto(Language language) {

@@ -22,7 +22,7 @@ public class Language {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer languageId;
+	private Long languageId;
 
 	@Column(nullable = false, unique = true, length = 50)
 	private String languageName;
