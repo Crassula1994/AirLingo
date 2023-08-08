@@ -2,6 +2,7 @@ import { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import styled from "@emotion/styled";
+import theme from "@/assets/styles/Theme";
 
 function CalendarPage() {
     const [selectedDate, setSelectedDate] = useState(new Date());
@@ -37,10 +38,7 @@ const CalendarContainer = styled.div`
     .react-calendar {
         width: 400px;
         height: 450px;
-        max-width: 100%;
-        background: white;
-        border: 1px solid #a0a096;
-        line-height: 1.125em;
+        border: 0;
     }
 
     .react-calendar--doubleView {
@@ -108,7 +106,8 @@ const CalendarContainer = styled.div`
     }
 
     .react-calendar__month-view__days {
-        gap: 10px; /* 간격을 5px로 설정, 필요한 간격 값으로 조절하세요 */
+        gap: 10px;
+        justify-content: center;
     }
 
     .react-calendar__month-view__weekdays__weekday {
@@ -128,6 +127,7 @@ const CalendarContainer = styled.div`
 
     .react-calendar__month-view__days__day {
         flex: 0 0 calc(14.2857% - 10px) !important;
+        color: black;
     }
 
     .react-calendar__month-view__days__day--weekend {
@@ -141,7 +141,6 @@ const CalendarContainer = styled.div`
     .react-calendar__year-view .react-calendar__tile,
     .react-calendar__decade-view .react-calendar__tile,
     .react-calendar__century-view .react-calendar__tile {
-        /* padding: 2em 0.5em; */
     }
 
     .react-calendar__tile {
@@ -160,13 +159,13 @@ const CalendarContainer = styled.div`
     .react-calendar__tile:enabled:hover,
     .react-calendar__tile:enabled:focus {
         border-radius: 10px;
-        border: 5px solid #00b4d8;
-        background: #d9d9d9;
+        border: 5px solid ${theme.colors.selection};
+        background: ${theme.colors.faintgray};
     }
 
     .react-calendar__tile--now {
         border-radius: 10px;
-        border: 5px solid #d9f2f4;
+        border: 5px solid ${theme.colors.primary1};
         background: white;
         text-align: center;
     }
@@ -174,29 +173,27 @@ const CalendarContainer = styled.div`
     .react-calendar__tile--now:enabled:hover,
     .react-calendar__tile--now:enabled:focus {
         border-radius: 10px;
-        border: 5px solid #00b4d8;
-        background: #d9d9d9;
+        border: 5px solid ${theme.colors.selection};
+        background: ${theme.colors.faintgray};
     }
 
     .react-calendar__tile--hasActive {
-        background: #d9d9d9;
+        background: ${theme.colors.faintgray};
     }
 
     .react-calendar__tile--hasActive:enabled:hover,
     .react-calendar__tile--hasActive:enabled:focus {
-        background: #d9d9d9;
+        background: ${theme.colors.faintgray};
     }
 
     .react-calendar__tile--active {
         border-radius: 10px;
-        background: #d9d9d9;
-        /* color: black; */
+        background: ${theme.colors.faintgray};
     }
 
     .react-calendar__tile--active:enabled:hover,
     .react-calendar__tile--active:enabled:focus {
         /* 날짜 선택 후 */
-        color: black;
     }
 
     .react-calendar--selectRange .react-calendar__tile--hover {
