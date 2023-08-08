@@ -7,6 +7,7 @@ import StatisticHome2 from "./StatisticHome2";
 import Script from "./Script";
 import CalendarPage from "./CalendarPage";
 import StudyTimeStatistic from "./StudyTimeStatistic";
+import WordBook from "./WordBook";
 
 export {
     MyPageBook,
@@ -18,4 +19,5 @@ export {
     Script,
     CalendarPage,
     StudyTimeStatistic,
+    WordBook,
 };
