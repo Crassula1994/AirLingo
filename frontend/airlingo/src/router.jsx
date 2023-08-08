@@ -10,7 +10,7 @@ import Script from "./pages/mypage/Script";
 import SignUp from "./pages/signup";
 import Meeting from "./pages/meeting";
 import { MatchHome, MatchQueue, MatchResult, MatchStandby } from "./pages/match";
-import { MyPageBook } from "./pages/mypage";
+import { MyPageBook, CalendarPage } from "./pages/mypage";
 
 /* fix me! 페이지 추가에 따른 등록 필요! */
 const routerData = [
@@ -27,7 +27,7 @@ const routerData = [
         id: 1,
         path: "/test",
         label: "Test",
-        element: <Home />,
+        element: <CalendarPage />,
         withAuth: false,
         headerExist: true,
         mustNotAuth: false,
